@@ -55,19 +55,19 @@ def list_project_info():
 
     title = request.args.get('project')
 
-    project_info = hackbright.get_project_by_title(title)
+    project_description = hackbright.get_project_by_title(title)
 
-    ### WORKING ON THISSSSSSSS!!!!!!!!!!!!
+    project_info = hackbright.get_student_name_grade()
 
-    grades_tuple = hackbright.get_grades_by_title(title)
-    # [(u'jhacks', 10), (u'sdevelops', 50)]
+    project_by_title = []
 
-    student_info = hackbright.get_student_by_github(grades_tuple[0][0])
+    for info in project_info:
+        if info[3] == title:
+            project_by_title.append(info)
 
-    # (u'Jane', u'Hacker', u'jhacks')
+    return render_template("projects.html", title=title, project_description=project_description, project_info=project_info, project_by_title=project_by_title)
 
-
-    return render_template("projects.html", project_info=project_info, grades_tuple=grades_tuple, student_info=student_info)
+# project_info = [(u'Jane', u'Hacker', u'jhacks', u'Blockly', 2), (u'Jane', u'Hacker', u'jhacks', u'Markov', 10), (u'Sarah', u'Developer', u'sdevelops', u'Markov', 50), (u'Sarah', u'Developer', u'sdevelops', u'Blockly', 100)]
 
 
 
