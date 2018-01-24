@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Project Info</title>
+</head>
+<body>
+    <ul>
+        <h2>Description of {{ title }} Project</h2>
+        <li>Project Name: {{ project_description[0] }}</li>
+        <li>Project Description: {{ project_description[1] }}</li>
+        <li>Project Max Score: {{ project_description[2] }}</li>
+    </ul>
+
+    <ul>
+        <h2>Student Grades for {{ title }} Project</h2>
+        {% for tuple in project_by_title %}
+            <li>Name: <a href="/student?github={{ tuple[2] }}">{{ tuple[0] }} {{ tuple[1] }}</a></li>
+            <li>Grade: {{ tuple[-1] }}</li><br>
+        {% endfor %}
+
+        
+    </ul>
+
+</body>
+</html>

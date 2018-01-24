@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Student Info</title>
+</head>
+<body>
+    <h1>{{ first }} {{ last }}</h1>
+
+    <p>GitHub Account: {{ github }}</p>
+    <ul>
+    {% for project in student_tuple %}
+
+        <li>Project: <a href="/project?project={{ project[0] }}">{{ project[0] }}</a></li>
+        <li>Grade: {{ project[1] }}</li>
+
+    {% endfor %}
+    </ul>
+
+    </body>
+</html>
